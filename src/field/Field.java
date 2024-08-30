@@ -1,19 +1,28 @@
 package field;
 
-import figures.Figure;
-import figures.King;
-import figures.Piece;
+import figures.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Field {
+
     private HashMap <Coordinates,Figure> figures = new HashMap<>(32);
     private ArrayList<Coordinates> isUnderWhiteAttack = new ArrayList<>(64);
     private ArrayList<Coordinates> isUnderBlackAttack = new ArrayList<>(64);
 
     public HashMap<Coordinates, Figure> getFigures() {
         return figures;
+    }
+
+    public Field(){
+
+    }
+
+    public Field(Field field) {
+        this.figures = field.figures;
+        this.isUnderWhiteAttack = field.isUnderWhiteAttack;
+        this.isUnderBlackAttack = field.isUnderBlackAttack;
     }
 
     public void checkAttack(){
@@ -54,8 +63,8 @@ public class Field {
                     }
                 }
             }
-            else {
-                ArrayList<Coordinates> cells = figure.getAllowedMovements(this);
+            else{
+                ArrayList<Coordinates> cells = figure.getPossibleMovements(this);
                 if (figure.isWhite()) isUnderWhiteAttack.addAll(cells);
                 else isUnderBlackAttack.addAll(cells);
             }

@@ -19,7 +19,7 @@ public class ConsoleRender {
         HashMap<Coordinates, Figure> figures = field.getFigures();
         for(int row = 0; row < 8; row++){
             for(int pos = 7; pos >= 0; pos--){
-                System.out.print((row + pos) % 2 == 0 ? whiteBackground : blackBackground);
+                System.out.print((row + pos) % 2 == 1 ? whiteBackground : blackBackground);
                 System.out.print(" ");
                 if(figures.containsKey(new Coordinates(row,pos))){
                     Figure figure = figures.get(new Coordinates(row,pos));
@@ -41,7 +41,7 @@ public class ConsoleRender {
                 Coordinates temp = new Coordinates(row,pos);
                 if (temp.equals(begin)) System.out.print(choice);
                 else if (movements.contains(temp)) System.out.print(attack);
-                else System.out.print((row + pos) % 2 == 0 ? whiteBackground : blackBackground);
+                else System.out.print((row + pos) % 2 == 1 ? whiteBackground : blackBackground);
                 System.out.print(" ");
                 if(figures.containsKey(temp)){
                     Figure figure = figures.get(temp);
@@ -60,7 +60,7 @@ public class ConsoleRender {
         HashMap<Coordinates, Figure> figures = field.getFigures();
         for(int row = 7; row >= 0; row--){
             for(int pos = 0; pos < 8; pos++){
-                System.out.print((row + pos) % 2 == 0 ? whiteBackground : blackBackground);
+                System.out.print((row + pos) % 2 == 1 ? whiteBackground : blackBackground);
                 System.out.print(" ");
                 if(figures.containsKey(new Coordinates(row,pos))){
                     Figure figure = figures.get(new Coordinates(row,pos));
@@ -81,7 +81,7 @@ public class ConsoleRender {
                 Coordinates temp = new Coordinates(row,pos);
                 if (temp.equals(begin)) System.out.print(choice);
                 else if (movements.contains(temp)) System.out.print(attack);
-                else System.out.print((row + pos) % 2 == 0 ? whiteBackground : blackBackground);
+                else System.out.print((row + pos) % 2 == 1 ? whiteBackground : blackBackground);
                 System.out.print(" ");
                 if(figures.containsKey(temp)){
                     Figure figure = figures.get(temp);

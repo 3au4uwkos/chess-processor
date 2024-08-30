@@ -54,7 +54,7 @@ public class King extends Figure{
             !field.getIsUnderBlackAttack().contains(new Coordinates(0,3)) ){
                 if(figures.get(new Coordinates(0,0)).getClass() == Rook.class){
                     Rook rook = (Rook)figures.get(new Coordinates(0,0));
-                    if(!rook.isMoved()) ans.add(new Coordinates(0,1));
+                    if(!rook.isMoved()) ans.add(new Coordinates(0,2));
                 }
             }
         }
@@ -80,7 +80,7 @@ public class King extends Figure{
                     !field.getIsUnderWhiteAttack().contains(new Coordinates(7,3)) ){
                 if (figures.get(new Coordinates(7, 0)).getClass() == Rook.class) {
                     Rook rook = (Rook)figures.get(new Coordinates(7,0));
-                    if(!rook.isMoved()) ans.add(new Coordinates(1,1));
+                    if(!rook.isMoved()) ans.add(new Coordinates(7,2));
                 }
             }
         }
@@ -91,6 +91,8 @@ public class King extends Figure{
     public boolean validateMovement(Coordinates coordinates, Field field) {
         if (coordinates.getRow() > 7 || coordinates.getPosition() > 7) return false;
         if (coordinates.getRow() < 0 || coordinates.getPosition() < 0) return false;
+        if(this.isWhite() && field.getIsUnderBlackAttack().contains(coordinates)) return false;
+        if(!this.isWhite() && field.getIsUnderWhiteAttack().contains(coordinates)) return false;
         HashMap<Coordinates,Figure> figures = field.getFigures();
         ArrayList<Coordinates> check = this.isWhite()? field.getIsUnderBlackAttack() : field.getIsUnderWhiteAttack();
         if(figures.containsKey(coordinates)){

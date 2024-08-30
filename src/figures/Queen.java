@@ -26,7 +26,7 @@ public class Queen extends Figure{
             Coordinates coordinates = new Coordinates(i,j);
             if(figures.containsKey(coordinates)){
                 Figure temp = figures.get(coordinates);
-                if(this.isWhite() != temp.isWhite() && temp.getClass() != King.class) ans.add(coordinates);
+                ans.add(coordinates);
                 break;
             }
             ans.add(coordinates);
@@ -38,7 +38,7 @@ public class Queen extends Figure{
             Coordinates coordinates = new Coordinates(i,j);
             if(figures.containsKey(coordinates)){
                 Figure temp = figures.get(coordinates);
-                if(this.isWhite() != temp.isWhite() && temp.getClass() != King.class) ans.add(coordinates);
+                ans.add(coordinates);
                 break;
             }
             ans.add(coordinates);
@@ -50,7 +50,7 @@ public class Queen extends Figure{
             Coordinates coordinates = new Coordinates(i,j);
             if(figures.containsKey(coordinates)){
                 Figure temp = figures.get(coordinates);
-                if(this.isWhite() != temp.isWhite() && temp.getClass() != King.class) ans.add(coordinates);
+                ans.add(coordinates);
                 break;
             }
             ans.add(coordinates);
@@ -62,7 +62,7 @@ public class Queen extends Figure{
             Coordinates coordinates = new Coordinates(i,j);
             if(figures.containsKey(coordinates)){
                 Figure temp = figures.get(coordinates);
-                if(this.isWhite() != temp.isWhite() && temp.getClass() != King.class) ans.add(coordinates);
+                ans.add(coordinates);
                 break;
             }
             ans.add(coordinates);
@@ -73,7 +73,7 @@ public class Queen extends Figure{
             Coordinates coordinates = new Coordinates(i,currentPos);
             if(figures.containsKey(coordinates)){
                 Figure temp = figures.get(coordinates);
-                if(this.isWhite() != temp.isWhite() && temp.getClass() != King.class) ans.add(coordinates);
+                ans.add(coordinates);
                 break;
             }
             ans.add(coordinates);
@@ -84,7 +84,7 @@ public class Queen extends Figure{
             Coordinates coordinates = new Coordinates(i,currentPos);
             if(figures.containsKey(coordinates)){
                 Figure temp = figures.get(coordinates);
-                if(this.isWhite() != temp.isWhite() && temp.getClass() != King.class) ans.add(coordinates);
+                ans.add(coordinates);
                 break;
             }
             ans.add(coordinates);
@@ -95,7 +95,7 @@ public class Queen extends Figure{
             Coordinates coordinates = new Coordinates(currentRow,i);
             if(figures.containsKey(coordinates)){
                 Figure temp = figures.get(coordinates);
-                if(this.isWhite() != temp.isWhite() && temp.getClass() != King.class) ans.add(coordinates);
+                ans.add(coordinates);
                 break;
             }
             ans.add(coordinates);
@@ -106,7 +106,7 @@ public class Queen extends Figure{
             Coordinates coordinates = new Coordinates(currentRow,i);
             if(figures.containsKey(coordinates)){
                 Figure temp = figures.get(coordinates);
-                if(this.isWhite() != temp.isWhite() && temp.getClass() != King.class) ans.add(coordinates);
+                ans.add(coordinates);
                 break;
             }
             ans.add(coordinates);

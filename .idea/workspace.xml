@@ -4,28 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="188eb705-bb06-42e8-a231-81b7457f9b29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chess.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/field/ConsoleRender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/field/Coordinates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/field/Field.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/field/FieldInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/field/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/figures/Bishop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/figures/Figure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/figures/King.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/figures/Knight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/figures/Piece.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/figures/Queen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/figures/Rook.java" afterDir="false" />
+    <list default="true" id="188eb705-bb06-42e8-a231-81b7457f9b29" name="Changes" comment="A prototype without end of game">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/field/ConsoleRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/field/ConsoleRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/field/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/field/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/field/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/field/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/figures/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/figures/Bishop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/figures/Figure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/figures/Figure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/figures/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/figures/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/figures/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/figures/Queen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/figures/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/figures/Rook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +31,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;3au4uwkos&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/3au4uwkos/chess-processor.git&quot;,
+    &quot;accountId&quot;: &quot;0a823083-1ce7-4212-8329-b48855733634&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -75,22 +75,58 @@
       <option name="presentableId" value="Default" />
       <updated>1723620744539</updated>
     </task>
+    <task id="LOCAL-00001" summary="A prototype without end of game">
+      <option name="closed" value="true" />
+      <created>1724562391614</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724562391614</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="A prototype without end of game" />
+    <option name="LAST_COMMIT_MESSAGE" value="A prototype without end of game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/field/Field.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
           <line>8</line>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="field.Field" memberName="isUnderWhiteAttack" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

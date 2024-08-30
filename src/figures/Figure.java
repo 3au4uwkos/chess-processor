@@ -16,6 +16,7 @@ public abstract class Figure {
         if (coordinates.getRow() < 0 || coordinates.getPosition() < 0) return false;
         HashMap<Coordinates,Figure> figures = field.getFigures();
         if(figures.containsKey(coordinates)){
+            if (figures.get(coordinates).getClass() == King.class) return false;
             return (figures.get(coordinates).isWhite() != this.isWhite() && figures.get(coordinates).getClass() != King.class);
         }
         return true;

@@ -11,8 +11,46 @@ public class Game {
     private static Coordinates blackKing = new Coordinates(7,4);
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final Field field = FieldInitializer.init();
+    private static  Field field = FieldInitializer.init();
     private static final HashMap<Coordinates,Figure> figures = field.getFigures();
+
+    public static boolean checkmateWhite(Field field){
+        ArrayList<Coordinates> whiteFigures = new ArrayList<>(16);
+        for(Coordinates key : figures.keySet()) if(figures.get(key).isWhite()) whiteFigures.add(key);
+        for(Coordinates key : whiteFigures){
+                Figure temp = figures.get(key);
+                Field copy = new Field(field);
+                ArrayList<Coordinates> movements = temp.getAllowedMovements(field);
+                for(Coordinates movement : movements){
+                    figures.remove(key);
+                    temp.setCoordinates(movement);
+                    figures.put(temp.getCoordinates(),temp);
+                    field.checkAttack();
+                    if(!field.getIsUnderBlackAttack().contains(whiteKing)) return false;
+                    field = new Field(copy);
+                }
+        }
+        return true;
+    }
+
+    public static boolean checkmateBlack(Field field){
+        ArrayList<Coordinates> blackFigures = new ArrayList<>(16);
+        for(Coordinates key : figures.keySet()) if(!figures.get(key).isWhite()) blackFigures.add(key);
+        for(Coordinates key : blackFigures){
+            Figure temp = figures.get(key);
+            Field copy = new Field(field);
+            ArrayList<Coordinates> movements = temp.getAllowedMovements(field);
+            for(Coordinates movement : movements){
+                figures.remove(key);
+                temp.setCoordinates(movement);
+                figures.put(temp.getCoordinates(),temp);
+                field.checkAttack();
+                if(!field.getIsUnderWhiteAttack().contains(blackKing)) return false;
+                field = new Field(copy);
+            }
+        }
+        return true;
+    }
 
     public static Coordinates chooseWhite(){
         while(true){
@@ -51,13 +89,15 @@ public class Game {
                         Figure rook;
                         if(input.getPosition() > begin.getPosition()){
                             rook = figures.get(new Coordinates(0, 7));
+                            if(((Rook) rook).isMoved()) continue;
                             figures.remove(rook.getCoordinates());
                             rook.setCoordinates(new Coordinates(0,5));
                         }
                         else{
                             rook = figures.get(new Coordinates(0, 0));
+                            if(((Rook) rook).isMoved()) continue;
                             figures.remove(rook.getCoordinates());
-                            rook.setCoordinates(new Coordinates(0,2));
+                            rook.setCoordinates(new Coordinates(0,3));
                         }
                         figures.put(rook.getCoordinates(),rook);
                     }
@@ -65,13 +105,15 @@ public class Game {
                         Figure rook;
                         if(input.getPosition() > begin.getPosition()){
                             rook = figures.get(new Coordinates(7, 7));
+                            if(((Rook) rook).isMoved()) continue;
                             figures.remove(rook.getCoordinates());
                             rook.setCoordinates(new Coordinates(7,5));
                         }
                         else{
                             rook = figures.get(new Coordinates(7, 0));
+                            if(((Rook) rook).isMoved()) continue;
                             figures.remove(rook.getCoordinates());
-                            rook.setCoordinates(new Coordinates(7,2));
+                            rook.setCoordinates(new Coordinates(7,3));
                         }
                         figures.put(rook.getCoordinates(),rook);
                     }
@@ -88,53 +130,59 @@ public class Game {
 
     public static Coordinates chooseBlack(){
         while(true){
-        String temp = scanner.nextLine();
-        int pos = temp.charAt(0) - 'A';
-        int row = (temp.charAt(1) - '0') - 1;
-        Coordinates input = new Coordinates(row,pos);
-        if(figures.containsKey(input)) {
-            if (!figures.get(input).isWhite()){
-                if(!figures.get(input).getAllowedMovements(field).isEmpty()) return input;
+            String temp = scanner.nextLine();
+            int pos = temp.charAt(0) - 'A';
+            int row = (temp.charAt(1) - '0') - 1;
+            Coordinates input = new Coordinates(row,pos);
+            if(figures.containsKey(input)) {
+                if (!figures.get(input).isWhite()){
+                    if(!figures.get(input).getAllowedMovements(field).isEmpty()) return input;
+                }
             }
+            System.out.println("Choose another checkerboard cell");
         }
-        System.out.println("Choose another checkerboard cell");
     }
-}
 
 
     public static void start(){
-        while (true) {
-
+        while(true){
             field.checkAttack();
-            ConsoleRender.showWhitePlayer(field);
-
             if(field.getIsUnderBlackAttack().contains(whiteKing)){
-                Figure king = figures.get(whiteKing);
-                if(king.getAllowedMovements(field).isEmpty()){
-                    System.out.println("Game over!");
-                    System.out.println("Black has defeated white!");
+                if(checkmateWhite(field)){
+                    System.out.println("Black has won");
                     break;
                 }
-                move(whiteKing);
             }
-            else move(chooseWhite());
+            Field previous = new Field(field);
+            ConsoleRender.showWhitePlayer(field);
+            move(chooseWhite());
+            field.checkAttack();
+            while (field.getIsUnderBlackAttack().contains(whiteKing)){
+                System.out.println("Make another move");
+                field = new Field(previous);
+                ConsoleRender.showWhitePlayer(field);
+                move(chooseWhite());
+                field.checkAttack();
+            }
 
             System.out.println("\n\n\n");
-            ConsoleRender.showBlackPlayer(field);
-            field.checkAttack();
 
             if(field.getIsUnderWhiteAttack().contains(blackKing)){
-                Figure king = figures.get(blackKing);
-                if(king.getAllowedMovements(field).isEmpty()){
-                    System.out.println("Game over!");
-                    System.out.println("White has defeated black!");
+                if(checkmateBlack(field)){
+                    System.out.println("White has won");
                     break;
                 }
-                move(blackKing);
             }
-            else{
+            previous = new Field(field);
+            ConsoleRender.showBlackPlayer(field);
+            move(chooseBlack());
+            field.checkAttack();
+            while (field.getIsUnderWhiteAttack().contains(blackKing)){
+                System.out.println("Make another move");
+                field = new Field(previous);
+                ConsoleRender.showBlackPlayer(field);
                 move(chooseBlack());
-                System.out.println("\n\n\n");
+                field.checkAttack();
             }
         }
     }
