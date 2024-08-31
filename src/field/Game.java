@@ -147,6 +147,7 @@ public class Game {
     public static void start(){
         while(true){
             field.checkAttack();
+            ConsoleRender.showWhitePlayer(field);
             if(field.getIsUnderBlackAttack().contains(whiteKing)){
                 if(checkmateWhite(field)){
                     System.out.println("Black has won");
@@ -154,7 +155,6 @@ public class Game {
                 }
             }
             Field previous = new Field(field);
-            ConsoleRender.showWhitePlayer(field);
             move(chooseWhite());
             field.checkAttack();
             while (field.getIsUnderBlackAttack().contains(whiteKing)){
@@ -167,6 +167,8 @@ public class Game {
 
             System.out.println("\n\n\n");
 
+            ConsoleRender.showBlackPlayer(field);
+
             if(field.getIsUnderWhiteAttack().contains(blackKing)){
                 if(checkmateBlack(field)){
                     System.out.println("White has won");
@@ -174,7 +176,6 @@ public class Game {
                 }
             }
             previous = new Field(field);
-            ConsoleRender.showBlackPlayer(field);
             move(chooseBlack());
             field.checkAttack();
             while (field.getIsUnderWhiteAttack().contains(blackKing)){

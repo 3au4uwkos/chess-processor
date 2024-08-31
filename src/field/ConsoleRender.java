@@ -14,6 +14,9 @@ public class ConsoleRender {
     private static final String choice = "\033[48;2;201;4;219m";
     private static final String attack = "\033[48;2;44;160;209m";
     private static final String reset = "\033[0m";
+    private static final String blackVoid = "\033[38;2;51;32;13m";
+    private static final String whiteVoid = "\033[38;2;150;145;101m";
+    private static final String attackVoid = "\033[38;2;44;160;209m";
 
     public static void showBlackPlayer(Field field){
         HashMap<Coordinates, Figure> figures = field.getFigures();
@@ -27,10 +30,10 @@ public class ConsoleRender {
                     else System.out.print(blackFigure + figure);
                 }
                 else
-                    System.out.print(" ");
+                    System.out.print(((row + pos) % 2 == 1 ? whiteVoid : blackVoid) + (char) 9823);
                 System.out.print(" " + reset);
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -49,10 +52,12 @@ public class ConsoleRender {
                     else System.out.print(blackFigure + figure);
                 }
                 else
-                    System.out.print(" ");
+                    System.out.print((movements.contains(temp) ?
+                            attackVoid :
+                            ((row + pos) % 2 == 1 ? whiteVoid : blackVoid)) + (char) 9823);
                 System.out.print(" " + reset);
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -68,10 +73,10 @@ public class ConsoleRender {
                     else System.out.print(blackFigure + figure);
                 }
                 else
-                    System.out.print(" ");
+                    System.out.print(((row + pos) % 2 == 1 ? whiteVoid : blackVoid) + (char) 9823);
                 System.out.print(" " + reset);
             }
-            System.out.println("");
+            System.out.println();
         }
     }
     public static void showWhitePlayerChoice(Field field, ArrayList<Coordinates> movements, Coordinates begin){
@@ -89,10 +94,12 @@ public class ConsoleRender {
                     else System.out.print(blackFigure + figure);
                 }
                 else
-                    System.out.print(" ");
+                    System.out.print((movements.contains(temp) ?
+                            attackVoid :
+                            ((row + pos) % 2 == 1 ? whiteVoid : blackVoid)) + (char) 9823);
                 System.out.print(" " + reset);
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }
